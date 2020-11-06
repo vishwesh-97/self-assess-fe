@@ -28,9 +28,21 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "src/assets/vendor/icofont/icofont.min.css",
+              "src/assets/vendor/font-awesome/css/font-awesome.min.css",
+              "src/assets/vendor/ionicons/css/ionicons.min.css",
+              "src/assets/vendor/animate.css/animate.min.css",
+              "src/assets/vendor/venobox/venobox.css",
+              "src/assets/vendor/owl.carousel/assets/owl.carousel.min.css",
+              "src/assets/vendor/aos/aos.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
