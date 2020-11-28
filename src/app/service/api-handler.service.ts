@@ -37,6 +37,16 @@ export class ApiHandlerService {
     // this.loaderService.displayLoader(false);
   }
 
+  getFile(path: string, params = {}): Observable<any> {
+    return this.http.get(`${this.API_URL}${path}`, {
+      headers: this.setHeaders(false),
+      params: new HttpParams({
+        fromObject: params,
+      }),
+      responseType: 'blob',
+    }).pipe(map(res => res));
+  }
+
   get(path: string, params = {}): Observable<any> {
     return this.http.get(`${this.API_URL}${path}`, {
       headers: this.setHeaders(true),
