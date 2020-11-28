@@ -1,0 +1,89 @@
+<div class="container">
+    <app-navbar></app-navbar>
+
+    <div class="main-div card container-fluid">
+        <div class="card-body">
+            <h3 class="title">History</h3>
+            <!-- assessment div -->
+            <ng-container *ngIf="assessmentList && assessmentList.length === 0">
+                <div class="text-center">
+                    No records found.
+                </div>
+            </ng-container>
+
+            <ul class="list-group list-group-flush" *ngIf="assessmentList">
+                <!-- <li *ngFor="let tweet of tweetList; let i = index" class="list-group-item tweet-item">
+                    {{ tweet.text }} <footer style="font-size: 10px; float: right;">{{ tweet.created_at | date :'medium' }}</footer>
+                </li> -->
+                <li *ngFor="let obj of assessmentList; let i = index" class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <b>Name</b>: {{ obj.name }}<br>
+                            <ng-container *ngIf="obj.end_datetime"><b>Status</b>: Complete<br></ng-container>
+                            <ng-container *ngIf="!obj.end_datetime"><b>Status</b>: Incomplete<br></ng-container>
+                            <!-- <b>Completed Days</b>: 2<br> -->
+                            <b>Remaining days</b>: {{ obj.total_days-obj.completed_days }}<br>
+                            <b>Created on</b>: {{ obj.created_date | date :'mediumDate' }}<br>
+                            <!-- <b>Updated on</b>: 20, Nov<br> -->
+                        </div>
+                        <!-- <div class="col-md-3">
+                            <b>Total Days</b>: {{ obj.total_days }}<br>
+                            <b>Completed Days</b>: {{ obj.completed_days }}<br>
+                            <b>Updated on</b>: 20, Nov<br>
+                        </div> -->
+                        <div class="col-md-3">
+                            <a href="javascript:void(0)" (click)="downloadReport(obj.id)" style="font-weight: 500; text-decoration: none;">Download<span>
+                                <svg style="margin-left: 5px;" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cloud-download-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M8 0a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 4.095 0 5.555 0 7.318 0 9.366 1.708 11 3.781 11H7.5V5.5a.5.5 0 0 1 1 0V11h4.188C14.502 11 16 9.57 16 7.773c0-1.636-1.242-2.969-2.834-3.194C12.923 1.999 10.69 0 8 0zm-.354 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V11h-1v3.293l-2.146-2.147a.5.5 0 0 0-.708.708l3 3z"/>
+                                  </svg>
+                            </span>
+                        </a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="javascript:void(0)" (click)="setCurrentAssessment(obj.id)" data-toggle="modal" data-target="#addEmailModal" style="font-weight: 500; text-decoration: none;">Share<span>
+                                <svg style="margin-left: 5px;" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-envelope-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+                                  </svg>
+                            </span>
+                        </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="text-center mt-3">
+                <a [routerLink]="['/assessment']" routerLinkActive="router-link-active" 
+                type="button" class="btn btn-dark add-btn">BACK</a>
+            </div>
+        </div>
+    </div>
+    <div class="text-center mt-4" *ngIf="assessmentList">
+        <small style="font-weight: 500;">*You can download or share your assessment report by clicking 'Download' or 'Share'</small>
+    </div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="addEmailModal" tabindex="-1" data-backdrop="static" data-keyboard="false"
+    aria-labelledby="addEmailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addEmailModalLabel">Share via email</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12" style="padding: 0 40px 10px 40px;">
+                        Email:
+                        <input class="form-control" [(ngModel)]="toEmail" type="email"
+                                placeholder="recipient email" pattern="^\S*$">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm modal-btn" (click)="closeModal()"
+                    data-dismiss="modal" #closeModalBtn>Close</button>
+                <button type="button" [disabled]="!toEmail" class="btn btn-primary btn-sm modal-btn" (click)="shareReport()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

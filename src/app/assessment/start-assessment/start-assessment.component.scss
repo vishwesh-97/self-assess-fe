@@ -1,0 +1,41 @@
+.main-div{
+    max-width: 600px;
+    margin: 150px auto auto auto;
+    border-radius: 10px;
+    // width: 87.5%;
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.title{
+    // font-weight: 600;
+    // margin: 10px auto 30px 50px;
+    // margin: 10px 0 10px 0;
+    text-align: center;
+    // color: white;
+}
+
+.next-btn-div{
+    float: right;
+}
+
+.add-btn{
+    background-color: black;
+    padding: 8px 15px 8px 15px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 5px;
+}
+
+.que-div{
+    text-align: center;
+    margin-top: 30px;
+}
+
+.select-div{
+    display: flex;
+    justify-content: center;
+}
+
+.custom-select{
+    max-width: 150px;
+}

@@ -1,0 +1,21 @@
+<header id="header" class="fixed-top">
+    <div class="container-fluid">
+  
+      <div class="row justify-content-center">
+        <div class="col-xl-11 d-flex align-items-center">
+          <h1 class="logo mr-auto"><a href="./" style="text-decoration: none;">Self-Assessment</a></h1>
+          <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+          <nav class="nav-menu d-none d-lg-block" *ngIf="userLogIn">
+            <ul>
+              <!-- <li class="active"><a [routerLink]="['/home']" routerLinkActive="router-link-active" href="#">Home</a></li> -->
+              <li><a style="text-decoration: none;" (click)="goToHistory()">History</a></li>
+              <li><a style="text-decoration: none;" (click)="logOut()">Log out</a></li>
+              <!-- <li><a href="#contact">Contact Us</a></li>
+              <li><a [routerLink]="['/login']" routerLinkActive="router-link-active" href="#">Sign In</a></li> -->
+            </ul>
+          </nav>
+        </div>
+      </div>
+  
+    </div>
+</header>
