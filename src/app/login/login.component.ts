@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     this.cookieExists = this.cookieService.check('Token');
 
     if (this.cookieExists) {
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/assessment');
     }
 
     this.loginForm = this.formBuilder.group({
@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
     let token = res.token;
     this.cookieService.set('Token', token, 1, '/')
     localStorage.setItem('user_data', JSON.stringify(res.user));
-    this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/assessment');
   }
 
 }
