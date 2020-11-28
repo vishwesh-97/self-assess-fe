@@ -18,6 +18,12 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent
   },
+  {
+    path: 'assessment',
+    loadChildren: () => import('./assessment/assessment.module')
+      .then(m => m.AssessmentModule),
+    // canActivate: [AuthGuard],
+  },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 

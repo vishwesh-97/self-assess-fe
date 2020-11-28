@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    font-family: Montserrat !important;
+    // background-color: #093958 !important;
+    background: url("assets/img/about-bg.jpg") center top no-repeat fixed;
+    background-size: cover;
+    background-color: rgba(255, 255, 255, 0.849) !important;
+    background-blend-mode: lighten;
+    // padding: 60px 0 40px 0;
+}
