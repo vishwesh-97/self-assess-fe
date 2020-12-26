@@ -86,6 +86,10 @@ export class StartAssessmentComponent implements OnInit, AfterViewInit {
       if (queList.length == 1){
         this.showFinish = true;
       }
+    } else {
+      this.toastr.error('You have already submitted Answers for today!', 'Error!', {
+        timeOut: 5000,
+      });
     }
   }
 
